@@ -13,10 +13,11 @@ func main() {
 		log.Fatalf("fail to read input: %v", err)
 		return
 	}
-	fmt.Println(solve(ints))
+
+	fmt.Println(solve1(ints))
 }
 
-func solve(ints []int) int {
+func solve1(ints []int) int {
 	prev := ints[0]
 	incr := 0
 
@@ -26,6 +27,20 @@ func solve(ints []int) int {
 			incr++
 		}
 		prev = curr
+	}
+	return incr
+}
+
+func solve2(ints []int) int {
+	incr := 0
+
+	for i := 0; i < len(ints)-3; i++ {
+		curr := ints[i] + ints[i+1] + ints[i+2]
+		next := ints[i+1] + ints[i+2] + ints[i+3]
+
+		if curr < next {
+			incr++
+		}
 	}
 	return incr
 }

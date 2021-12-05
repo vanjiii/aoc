@@ -30,3 +30,22 @@ func ReadInts(file string) ([]int, error) {
 
 	return input, nil
 }
+
+func ReadStrings(file string) ([]string, error) {
+	f, err := os.Open(file)
+	if err != nil {
+		return nil, fmt.Errorf("fail to open file: %w", err)
+	}
+	defer f.Close()
+
+	sc := bufio.NewScanner(f)
+	input := make([]string, 0)
+	for sc.Scan() {
+		input = append(input, sc.Text())
+	}
+	if err := sc.Err(); err != nil {
+		return nil, fmt.Errorf("scan file error: %w", err)
+	}
+
+	return input, nil
+}
