@@ -15,4 +15,5 @@ func TestSolve(t *testing.T) {
 	}
 
 	pkg.AssertInt(t, solve1(numbers), 198)
+	pkg.AssertInt(t, solve2(numbers), 230)
 }
