@@ -18,6 +18,26 @@ func main() {
 	fmt.Println(partone(rows))
 }
 
+func parttwo(rows []string) int {
+	res := 0
+
+	for _, row := range rows {
+
+		for i := range 12 {
+			res += find(row, 12-i)
+		}
+
+	}
+
+	return res
+}
+
+func find(s string, idx int) int {
+	for i := len(s)-idx-1
+
+	return 0
+}
+
 func partone(rows []string) int {
 	res := 0
 	for _, row := range rows {
