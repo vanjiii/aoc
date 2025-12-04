@@ -1,3 +1,3 @@
 module github.com/vanjiii/aoc
 
-go 1.25
+go 1.24

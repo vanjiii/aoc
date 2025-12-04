@@ -15,27 +15,44 @@ func main() {
 		return
 	}
 
-	fmt.Println(partone(rows))
+	fmt.Println(parttwo(rows))
 }
 
 func parttwo(rows []string) int {
 	res := 0
 
 	for _, row := range rows {
+		elements := []byte{}
 
+		startidx := 0
+		el := byte('x')
 		for i := range 12 {
-			res += find(row, 12-i)
+			startidx, el = find(row, startidx, 12-i)
+			elements = append(elements, el)
 		}
+
+		tmp, _ := strconv.Atoi(string(elements))
+		fmt.Println(tmp)
+		res += tmp
 
 	}
 
 	return res
 }
 
-func find(s string, idx int) int {
-	for i := len(s)-idx-1
+func find(s string, startidx, endidx int) (int, byte) {
+	ll := len(s) - endidx
 
-	return 0
+	maxel := byte('0')
+	j := -1
+	for i := startidx; i <= ll; i++ {
+		if maxel < s[i] {
+			maxel = s[i]
+			j = i + 1
+		}
+	}
+
+	return j, maxel
 }
 
 func partone(rows []string) int {

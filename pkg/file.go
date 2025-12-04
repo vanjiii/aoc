@@ -49,3 +49,25 @@ func ReadStrings(file string) ([]string, error) {
 
 	return input, nil
 }
+
+func ReadGrid(file string) ([][]rune, error) {
+	f, err := os.Open(file)
+	if err != nil {
+		return nil, err
+	}
+	defer f.Close()
+
+	var grid [][]rune
+	scanner := bufio.NewScanner(f)
+
+	for scanner.Scan() {
+		line := scanner.Text()
+		grid = append(grid, []rune(line))
+	}
+
+	if err := scanner.Err(); err != nil {
+		return nil, err
+	}
+
+	return grid, nil
+}
